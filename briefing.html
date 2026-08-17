@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Especificaciones del Proyecto | BackendForge Studio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Supabase JS Client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between font-sans selection:bg-emerald-500 selection:text-slate-950">
+
+  <!-- Header -->
+  <header class="border-b border-slate-800/80 bg-slate-900/70 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-3.5 w-3.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></div>
+        <span class="text-xl font-bold tracking-tight text-white">BackendForge <span class="text-xs text-emerald-400 font-mono font-normal ml-1">Studio</span></span>
+      </a>
+      <span class="text-xs text-slate-400 border border-slate-800 px-3 py-1 rounded-full">Paso 2 de 2: Briefing</span>
+    </div>
+  </header>
+
+  <!-- Formulario de Briefing -->
+  <main class="max-w-3xl mx-auto px-6 py-12 flex-1 w-full">
+    
+    <div class="mb-10">
+      <h1 class="text-3xl font-extrabold text-white tracking-tight">Especificaciones de tu API</h1>
+      <p class="text-slate-400 mt-2 text-sm">
+        Rellena los detalles técnicos a continuación. Usaremos esta información para estructurar tu base de datos y construir los endpoints en producción.
+      </p>
+    </div>
+
+    <!-- Mensaje de éxito (oculto por defecto) -->
+    <div id="success-box" class="hidden bg-emerald-950/60 border border-emerald-500 text-emerald-200 p-6 rounded-2xl mb-8 text-center">
+      <div class="text-2xl mb-2">🚀</div>
+      <h2 class="text-lg font-bold text-white mb-1">¡Especificaciones recibidas correctamente!</h2>
+      <p class="text-sm text-emerald-300">Hemos registrado tu pedido. Nos ponemos manos a la obra y recibirás la entrega y credenciales en tu email en el plazo acordado.</p>
+    </div>
+
+    <form id="briefing-form" class="space-y-6 bg-slate-900/80 border border-slate-800 p-8 rounded-2xl shadow-xl">
+      
+      <!-- Datos de contacto -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" for="nombre">Tu Nombre o Empresa *</label>
+          <input type="text" id="nombre" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600" placeholder="Ej. Carlos Dev">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" for="email">Email para la entrega *</label>
+          <input type="email" id="email" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600" placeholder="tu@email.com">
+        </div>
+      </div>
+
+      <!-- Plan Seleccionado -->
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" for="plan">Plan Seleccionado *</label>
+        <select id="plan" required class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all">
+          <option value="Starter (99€)">Plan Starter - Micro-API (99 €)</option>
+          <option value="Pro (189€)">Plan Pro - Producción Completa (189 €)</option>
+        </select>
+      </div>
+
+      <!-- Descripción General -->
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" for="descripcion">¿Qué debe hacer tu API? *</label>
+        <textarea id="descripcion" rows="4" required class="w-full bg-slate-950 border border-slate-800 rounded-lg p-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600" placeholder="Ej. Necesito una API para registrar usuarios de una app móvil, guardar sus puntuaciones en un ranking y poder consultar el top 10 semanal..."></textarea>
+      </div>
+
+      <!-- Estructura de datos -->
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" for="datos">Campos o datos a guardar (opcional)</label>
+        <textarea id="datos" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-4 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600" placeholder="Ej. Tabla usuarios: id, nombre, email, nivel. Tabla partidas: user_id, puntuacion, fecha."></textarea>
+      </div>
+
+      <!-- Requisitos adicionales -->
+      <div>
+        <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2" for="requisitos">Requisitos extra o integraciones (opcional)</label>
+        <input type="text" id="requisitos" class="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-2.5 text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all placeholder:text-slate-600" placeholder="Ej. Autenticación con Bearer Token, Webhook para avisos, etc.">
+      </div>
+
+      <button type="submit" id="submit-btn" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3.5 rounded-xl transition-all shadow-md mt-6 flex justify-center items-center gap-2">
+        <span>Enviar Especificaciones y Comenzar</span>
+      </button>
+
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
+    &copy; 2026 BackendForge Studio. Todos los derechos reservados.
+  </footer>
+
+  <!-- Script para conectar con Supabase -->
+  <script>
+    const supabaseUrl = 'https://qjlvgvuigdugaoutkbme.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqbHZndnVpZ2R1Z2FvdXRrYm1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5ODgzNDcsImV4cCI6MjEwMjU2NDM0N30.Rp8CkxIeB5OsjXMFcin1KSMO2I6KUrvnXSiTzdSfzys';
+    const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    const form = document.getElementById('briefing-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successBox = document.getElementById('success-box');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Enviando especificaciones...';
+
+      const payload = {
+        cliente_nombre: document.getElementById('nombre').value,
+        cliente_email: document.getElementById('email').value,
+        plan: document.getElementById('plan').value,
+        descripcion_proyecto: document.getElementById('descripcion').value,
+        datos_requeridos: document.getElementById('datos').value,
+        requisitos_extra: document.getElementById('requisitos').value
+      };
+
+      const { data, error } = await supabaseClient
+        .from('pedidos')
+        .insert([payload]);
+
+      if (error) {
+        alert('Hubo un error al registrar el pedido: ' + error.message);
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Reintentar envío';
+      } else {
+        form.classList.add('hidden');
+        successBox.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+  </script>
+</body>
+</html>
