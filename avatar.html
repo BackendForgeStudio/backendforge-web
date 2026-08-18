@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descargar Avatar BackendForge</title>
+  <style>
+    body {
+      background: #090d16;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: system-ui, sans-serif;
+      margin: 0;
+    }
+    canvas {
+      border-radius: 50%;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      margin-bottom: 24px;
+    }
+    button {
+      background: #10b981;
+      color: #020617;
+      border: none;
+      font-weight: bold;
+      font-size: 15px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    button:hover {
+      background: #34d399;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="avatarCanvas" width="500" height="500"></canvas>
+  <button onclick="downloadPNG()">⬇️ Descargar Avatar PNG (500x500)</button>
+
+  <script>
+    const canvas = document.getElementById('avatarCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // 1. Fondo oscuro pizarra
+    ctx.fillStyle = '#020617';
+    ctx.fillRect(0, 0, 500, 500);
+
+    // 2. Resplandor radial esmeralda muy suave en el centro
+    const radial = ctx.createRadialGradient(250, 250, 40, 250, 250, 220);
+    radial.addColorStop(0, 'rgba(16, 185, 129, 0.12)');
+    radial.addColorStop(1, 'rgba(2, 6, 23, 0)');
+    ctx.fillStyle = radial;
+    ctx.fillRect(0, 0, 500, 500);
+
+    // 3. Anillo sutil esmeralda
+    ctx.strokeStyle = 'rgba(52, 211, 153, 0.25)';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.arc(250, 250, 220, 0, Math.PI * 2);
+    ctx.stroke();
+
+    // 4. Letras BF
+    ctx.fillStyle = '#34d399';
+    ctx.font = '900 160px system-ui, -apple-system, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(52, 211, 153, 0.6)';
+    ctx.shadowBlur = 30;
+    ctx.fillText('BF', 242, 250);
+
+    // 5. Punto verde de estado (Status dot)
+    ctx.shadowColor = 'rgba(52, 211, 153, 0.9)';
+    ctx.shadowBlur = 20;
+    ctx.fillStyle = '#10b981';
+    ctx.beginPath();
+    ctx.arc(360, 180, 14, 0, Math.PI * 2);
+    ctx.fill();
+
+    function downloadPNG() {
+      const link = document.createElement('a');
+      link.download = 'backendforge-avatar.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+  </script>
+</body>
+</html>
