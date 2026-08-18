@@ -139,14 +139,14 @@
         return;
       }
 
-      // 2. Enviar notificación instantánea a Telegram
-      const mensajeTelegram = `🔔 *¡NUEVO ENCARGO EN BACKENDFORGE!* 🔔\n\n` +
-        `👤 *Cliente:* ${payload.cliente_nombre}\n` +
-        `📧 *Email:* ${payload.cliente_email}\n` +
-        `📦 *Plan:* ${payload.plan}\n\n` +
-        `📝 *Descripción:*\n${payload.descripcion_proyecto}\n\n` +
-        `🗄 *Datos Requeridos:*\n${payload.datos_requeridos}\n\n` +
-        `⚙️ *Extras:*\n${payload.requisitos_extra}`;
+      // 2. Enviar notificación instantánea a Telegram (texto plano sin riesgo de formato)
+      const mensajeTelegram = `🔔 NUEVO ENCARGO EN BACKENDFORGE 🔔\n\n` +
+        `👤 Cliente: ${payload.cliente_nombre}\n` +
+        `📧 Email: ${payload.cliente_email}\n` +
+        `📦 Plan: ${payload.plan}\n\n` +
+        `📝 Descripción:\n${payload.descripcion_proyecto}\n\n` +
+        `🗄 Datos Requeridos:\n${payload.datos_requeridos}\n\n` +
+        `⚙️ Extras:\n${payload.requisitos_extra}`;
 
       try {
         await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
@@ -154,8 +154,7 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             chat_id: TELEGRAM_CHAT_ID,
-            text: mensajeTelegram,
-            parse_mode: 'Markdown'
+            text: mensajeTelegram
           })
         });
       } catch (err) {
