@@ -65,94 +65,101 @@
     ctx.fillRect(0, 0, 1280, 769);
 
     // 3. Marca superior (BackendForge Studio)
-    ctx.fillStyle = '#34d399';
     ctx.beginPath();
+    ctx.fillStyle = '#34d399';
     ctx.arc(90, 90, 8, 0, Math.PI * 2);
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 24px system-ui';
     ctx.textAlign = 'left';
-    ctx.fillText('BackendForge', 110, 98);
+    ctx.textBaseline = 'middle';
+    ctx.fillText('BackendForge', 110, 90);
     ctx.fillStyle = '#10b981';
     ctx.font = '20px monospace';
-    ctx.fillText('STUDIO', 285, 98);
+    ctx.fillText('STUDIO', 285, 91);
 
     // 4. Badge Superior
+    ctx.beginPath();
     ctx.fillStyle = 'rgba(16, 185, 129, 0.15)';
     ctx.strokeStyle = '#10b981';
     ctx.lineWidth = 1.5;
-    ctx.roundRect(90, 150, 290, 38, 8);
+    ctx.roundRect(90, 140, 270, 36, 8);
     ctx.fill();
     ctx.stroke();
 
     ctx.fillStyle = '#34d399';
-    ctx.font = 'bold 15px monospace';
-    ctx.fillText('⚡ PRODUCTION-READY APIS', 115, 174);
+    ctx.font = 'bold 14px monospace';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('⚡ PRODUCTION-READY APIS', 108, 158);
 
     // 5. Título Principal
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 64px system-ui';
-    ctx.fillText('Custom REST APIs &', 90, 265);
+    ctx.font = '900 60px system-ui';
+    ctx.fillText('Custom REST APIs &', 90, 250);
     ctx.fillStyle = '#34d399';
-    ctx.fillText('Supabase Databases', 90, 345);
+    ctx.fillText('Supabase Databases', 90, 325);
 
-    // 6. Subtítulo / Valor
+    // 6. Subtítulo
     ctx.fillStyle = '#94a3b8';
-    ctx.font = '500 24px system-ui';
-    ctx.fillText('Fast, secure microservices built with Node.js & PostgreSQL', 90, 410);
+    ctx.font = '500 22px system-ui';
+    ctx.fillText('Fast, secure microservices built with Node.js & PostgreSQL', 90, 390);
 
     // 7. Tarjetas de características (Features)
     function drawTag(text, x, y) {
-      ctx.fillStyle = 'rgba(30, 41, 59, 0.7)';
+      ctx.beginPath();
+      ctx.fillStyle = '#0f172a';
       ctx.strokeStyle = '#334155';
       ctx.lineWidth = 1.5;
-      ctx.roundRect(x, y, 320, 52, 10);
+      ctx.roundRect(x, y, 310, 48, 10);
       ctx.fill();
       ctx.stroke();
 
+      // Icono Check
       ctx.fillStyle = '#10b981';
-      ctx.font = 'bold 20px system-ui';
-      ctx.fillText('✓', x + 20, y + 33);
+      ctx.font = 'bold 18px system-ui';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('✓', x + 16, y + 24);
 
-      ctx.fillStyle = '#f1f5f9';
-      ctx.font = '600 17px system-ui';
-      ctx.fillText(text, x + 50, y + 33);
+      // Texto de la tarjeta
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = '600 15px system-ui';
+      ctx.fillText(text, x + 40, y + 24);
     }
 
-    drawTag('48-72h Fast Turnaround', 90, 480);
-    drawTag('Row-Level Security (RLS)', 430, 480);
-    drawTag('JWT / API Key Auth', 90, 550);
-    drawTag('Webhooks & Integrations', 430, 550);
-    drawTag('Postman Collection Docs', 90, 620);
-    drawTag('100% Full Code Ownership', 430, 620);
+    drawTag('48-72h Fast Turnaround', 90, 460);
+    drawTag('Row-Level Security (RLS)', 420, 460);
+    drawTag('JWT / API Key Auth', 90, 525);
+    drawTag('Webhooks & Integrations', 420, 525);
+    drawTag('Postman Collection Docs', 90, 590);
+    drawTag('100% Full Code Ownership', 420, 590);
 
-    // 8. Visual Code Card (Derecha)
+    // 8. Tarjeta de Código (Derecha)
+    ctx.beginPath();
     ctx.fillStyle = '#090e1a';
     ctx.strokeStyle = '#1e293b';
     ctx.lineWidth = 2;
-    ctx.roundRect(790, 160, 400, 490, 16);
+    ctx.roundRect(770, 140, 420, 500, 16);
     ctx.fill();
     ctx.stroke();
 
-    // Top Bar de la tarjeta
+    // Barra superior de la ventana
+    ctx.beginPath();
     ctx.fillStyle = '#0f172a';
-    ctx.roundRect(790, 160, 400, 44, [16, 16, 0, 0]);
+    ctx.roundRect(770, 140, 420, 44, [16, 16, 0, 0]);
     ctx.fill();
 
-    // Luces de la ventana
-    ctx.fillStyle = '#ef4444';
-    ctx.beginPath(); ctx.arc(815, 182, 6, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#f59e0b';
-    ctx.beginPath(); ctx.arc(835, 182, 6, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#10b981';
-    ctx.beginPath(); ctx.arc(855, 182, 6, 0, Math.PI * 2); ctx.fill();
+    // Botones de ventana
+    ctx.beginPath(); ctx.fillStyle = '#ef4444'; ctx.arc(795, 162, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.fillStyle = '#f59e0b'; ctx.arc(815, 162, 6, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.fillStyle = '#10b981'; ctx.arc(835, 162, 6, 0, Math.PI * 2); ctx.fill();
 
     ctx.fillStyle = '#64748b';
     ctx.font = '13px monospace';
-    ctx.fillText('api.serverless.ts', 980, 186);
+    ctx.textBaseline = 'middle';
+    ctx.fillText('api.serverless.ts', 960, 162);
 
-    // Contenido de Código Mockup
+    // Código Mockup
     const codeLines = [
       { text: '// Supabase & REST Endpoint', color: '#64748b' },
       { text: 'export default async (req, res) => {', color: '#c084fc' },
@@ -171,17 +178,19 @@
     ];
 
     ctx.font = '14px monospace';
-    let codeY = 240;
+    let codeY = 220;
     codeLines.forEach(line => {
-      ctx.fillStyle = line.color;
-      ctx.fillText(line.text, 815, codeY);
+      if (line.text) {
+        ctx.fillStyle = line.color;
+        ctx.fillText(line.text, 795, codeY);
+      }
       codeY += 26;
     });
 
-    // Tech Logos Footer de la tarjeta
+    // Tech Logos Footer
     ctx.fillStyle = '#10b981';
     ctx.font = 'bold 13px monospace';
-    ctx.fillText('NODE.JS  •  SUPABASE  •  VERCEL', 850, 615);
+    ctx.fillText('NODE.JS  •  SUPABASE  •  VERCEL', 835, 605);
 
     function downloadPNG() {
       const link = document.createElement('a');
