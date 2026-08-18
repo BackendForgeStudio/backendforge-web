@@ -15,100 +15,203 @@
         <div class="h-3.5 w-3.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></div>
         <span class="text-xl font-bold tracking-tight text-white">BackendForge <span class="text-xs text-emerald-400 font-mono font-normal ml-1">Studio</span></span>
       </div>
-      <a href="#planes" class="text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-lg transition-all shadow-sm">
-        Ver Planes
-      </a>
+      <div class="flex items-center gap-6">
+        <a href="#ejemplos" class="text-sm text-slate-400 hover:text-white transition-colors hidden sm:block">Ejemplos</a>
+        <a href="#faq" class="text-sm text-slate-400 hover:text-white transition-colors hidden sm:block">Preguntas</a>
+        <a href="#planes" class="text-sm font-semibold bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-lg transition-all shadow-sm">
+          Ver Planes
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <main class="max-w-6xl mx-auto px-6 py-16 flex-1 flex flex-col justify-center">
-    <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3.5 py-1.5 rounded-full">
-        Servicio Asíncrono &middot; Sin Reuniones
-      </span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold text-white mt-6 tracking-tight leading-tight">
-        APIs y Bases de Datos a medida, <span class="text-emerald-400">listas en 72h</span>.
-      </h1>
-      <p class="text-slate-400 text-lg sm:text-xl mt-6 leading-relaxed">
-        Desarrollamos microservicios rápidos, seguros y conectados a Supabase/PostgreSQL. Tú defines los requisitos en el checkout y nosotros te entregamos el backend desplegado en producción.
-      </p>
+  <main class="max-w-6xl mx-auto px-6 py-12 flex-1 w-full">
+    
+    <!-- Hero Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center my-8">
+      <div class="lg:col-span-7 text-left">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3.5 py-1.5 rounded-full inline-block mb-4">
+          Servicio Asíncrono &middot; Sin Reuniones
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+          APIs y Bases de Datos a medida, <span class="text-emerald-400">en 48-72h</span>.
+        </h1>
+        <p class="text-slate-400 text-lg mt-6 leading-relaxed">
+          Diseñamos microservicios rápidos, estructuramos esquemas SQL en Supabase y desplegamos tus endpoints en producción. Tú te centras en el producto y el frontend; nosotros nos encargamos del backend.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4 items-center">
+          <a href="#planes" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-6 py-3 rounded-xl transition-all shadow-md text-sm">
+            Elegir un Plan
+          </a>
+          <span class="text-xs text-slate-500 flex items-center gap-1.5">
+            <span class="text-emerald-400">●</span> 100% de propiedad del código fuente
+          </span>
+        </div>
+      </div>
+
+      <!-- Preview de Código / Mockup -->
+      <div class="lg:col-span-5">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl">
+          <div class="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+            </div>
+            <span class="text-xs font-mono text-slate-500">GET /api/v1/projects</span>
+          </div>
+          <div class="p-4 font-mono text-xs text-slate-300 leading-relaxed overflow-x-auto bg-slate-900/90">
+            <p><span class="text-purple-400">curl</span> -X GET \</p>
+            <p class="pl-4"><span class="text-emerald-300">"https://api.tudominio.com/api/projects"</span> \</p>
+            <p class="pl-4">-H <span class="text-amber-300">"Authorization: Bearer key_sec_..."</span></p>
+            <div class="mt-3 pt-3 border-t border-slate-800 text-slate-400">
+              <span class="text-emerald-400">HTTP/2 200 OK</span>
+              <pre class="text-slate-300 mt-1 text-[11px]">{
+  "status": "success",
+  "data": [
+    {
+      "id": "f81d4fae-7dec-...",
+      "name": "App Móvil MVP",
+      "status": "active",
+      "records_count": 1420
+    }
+  ]
+}</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stack Tecnológico -->
+    <div class="my-16 border-y border-slate-800/80 py-8">
+      <p class="text-center text-xs font-semibold uppercase tracking-wider text-slate-500 mb-6">Construido con tecnología moderna y escalable</p>
+      <div class="flex flex-wrap justify-center items-center gap-6 sm:gap-12 text-slate-400 font-mono text-sm font-medium">
+        <span class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><span>⚡</span> Supabase (PostgreSQL)</span>
+        <span class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><span>📦</span> Node.js Serverless</span>
+        <span class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><span>▲</span> Vercel Production</span>
+        <span class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><span>🛡️</span> RLS & JWT Auth</span>
+        <span class="flex items-center gap-2 hover:text-emerald-400 transition-colors"><span>📮</span> Postman Docs</span>
+      </div>
+    </div>
+
+    <!-- Ejemplos / Casos de Uso -->
+    <div id="ejemplos" class="my-20">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Lo que construimos habitualmente</h2>
+        <p class="text-slate-400 text-sm mt-2">Arquitecturas backend listas para conectar directamente a tu frontend o app.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl hover:border-slate-700 transition-all">
+          <div class="text-2xl mb-3">📱</div>
+          <h3 class="font-bold text-white mb-2">Backends para Apps Móviles</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Registro seguro de usuarios, sincronización de estados, rankings y subida de datos en tiempo real.</p>
+        </div>
+
+        <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl hover:border-slate-700 transition-all">
+          <div class="text-2xl mb-3">🔔</div>
+          <h3 class="font-bold text-white mb-2">Integración de Webhooks & Alertas</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">Recepción y procesamiento de eventos externos (Stripe, TradingView, formularios) con alertas automatizadas.</p>
+        </div>
+
+        <div class="bg-slate-900/60 border border-slate-800 p-6 rounded-2xl hover:border-slate-700 transition-all">
+          <div class="text-2xl mb-3">💼</div>
+          <h3 class="font-bold text-white mb-2">Sistemas de Gestión & Reservas</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">CRUD completo de clientes, citas, productos e inventario estructurado en PostgreSQL con consultas optimizadas.</p>
+        </div>
+      </div>
     </div>
 
     <!-- Planes / Pricing -->
-    <div id="planes" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
-      
-      <!-- Plan Básico -->
-      <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
-        <div>
-          <span class="text-emerald-400 font-semibold text-sm">Micro-API</span>
-          <h2 class="text-2xl font-bold text-white mt-1">Plan Starter</h2>
-          <p class="text-slate-400 text-sm mt-2">Ideal para prototipos, apps sencillas o sincronización puntual de datos.</p>
-          <div class="text-3xl font-extrabold text-white my-6">99 € <span class="text-sm font-normal text-slate-500">/ pago único</span></div>
-          
-          <ul class="text-sm text-slate-300 space-y-3">
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Hasta 3 Endpoints REST (CRUD)</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Conexión a Base de Datos Supabase</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Despliegue en producción (Vercel)</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Documentación básica de uso</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Entrega en 48 horas</li>
-          </ul>
-        </div>
-        <a href="https://buy.stripe.com/test_eVqeVc96oa4A9zd2ic8bS00" class="w-full mt-8 block text-center bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl transition-colors border border-slate-700">
-          Contratar Starter (99 €)
-        </a>
+    <div id="planes" class="my-20">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-semibold uppercase tracking-wider text-emerald-400">Precios Transparentes</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mt-2">Elige el plan para tu proyecto</h2>
+        <p class="text-slate-400 text-sm mt-2">Sin costes recurrentes obligatorios. Pago único por entrega completa.</p>
       </div>
 
-      <!-- Plan Completo -->
-      <div class="bg-slate-900 border-2 border-emerald-500/80 rounded-2xl p-8 flex flex-col justify-between relative shadow-lg shadow-emerald-950/40">
-        <span class="absolute -top-3 right-6 bg-emerald-500 text-slate-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
-          Recomendado
-        </span>
-        <div>
-          <span class="text-emerald-400 font-semibold text-sm">Producción Completa</span>
-          <h2 class="text-2xl font-bold text-white mt-1">Plan Pro API</h2>
-          <p class="text-slate-400 text-sm mt-2">Para aplicaciones con autenticación, tablas relacionales y webhooks.</p>
-          <div class="text-3xl font-extrabold text-white my-6">189 € <span class="text-sm font-normal text-slate-500">/ pago único</span></div>
-          
-          <ul class="text-sm text-slate-300 space-y-3">
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Hasta 8 Endpoints REST completos</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Esquema SQL optimizado en Supabase</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Autenticación (JWT / API Keys)</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Integración de Webhooks (alertas/pagos)</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Documentación interactiva + Colección Postman</li>
-            <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Entrega en 72 horas</li>
-          </ul>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto w-full">
+        
+        <!-- Plan Básico -->
+        <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between hover:border-slate-700 transition-all">
+          <div>
+            <span class="text-emerald-400 font-semibold text-sm">Micro-API</span>
+            <h3 class="text-2xl font-bold text-white mt-1">Plan Starter</h3>
+            <p class="text-slate-400 text-sm mt-2">Ideal para prototipos, apps sencillas o sincronización puntual de datos.</p>
+            <div class="text-3xl font-extrabold text-white my-6">99 € <span class="text-sm font-normal text-slate-500">/ pago único</span></div>
+            
+            <ul class="text-sm text-slate-300 space-y-3">
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Hasta 3 Endpoints REST (CRUD)</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Conexión a Base de Datos Supabase</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Despliegue en producción (Vercel)</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Documentación básica de uso</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Entrega en 48 horas</li>
+            </ul>
+          </div>
+          <a href="https://buy.stripe.com/test_eVqeVc96oa4A9zd2ic8bS00" class="w-full mt-8 block text-center bg-slate-800 hover:bg-slate-700 text-white font-medium py-3 rounded-xl transition-colors border border-slate-700">
+            Contratar Starter (99 €)
+          </a>
         </div>
-        <a href="https://buy.stripe.com/test_dRmdR8bew0u0cLp1e88bS01" class="w-full mt-8 block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md">
-          Contratar Pro (189 €)
-        </a>
-      </div>
 
-    </div>
+        <!-- Plan Completo -->
+        <div class="bg-slate-900 border-2 border-emerald-500/80 rounded-2xl p-8 flex flex-col justify-between relative shadow-lg shadow-emerald-950/40">
+          <span class="absolute -top-3 right-6 bg-emerald-500 text-slate-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow">
+            Recomendado
+          </span>
+          <div>
+            <span class="text-emerald-400 font-semibold text-sm">Producción Completa</span>
+            <h3 class="text-2xl font-bold text-white mt-1">Plan Pro API</h3>
+            <p class="text-slate-400 text-sm mt-2">Para aplicaciones con autenticación, tablas relacionales y webhooks.</p>
+            <div class="text-3xl font-extrabold text-white my-6">189 € <span class="text-sm font-normal text-slate-500">/ pago único</span></div>
+            
+            <ul class="text-sm text-slate-300 space-y-3">
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Hasta 8 Endpoints REST completos</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Esquema SQL optimizado en Supabase</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Autenticación (JWT / API Keys)</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Integración de Webhooks (alertas/pagos)</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Documentación interactiva + Colección Postman</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">✓</span> Entrega en 72 horas</li>
+            </ul>
+          </div>
+          <a href="https://buy.stripe.com/test_dRmdR8bew0u0cLp1e88bS01" class="w-full mt-8 block text-center bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-3 rounded-xl transition-all shadow-md">
+            Contratar Pro (189 €)
+          </a>
+        </div>
 
-    <!-- Cómo funciona -->
-    <div class="mt-20 max-w-4xl mx-auto w-full text-center">
-      <h3 class="text-xl font-bold text-white mb-8">Cómo funciona el servicio</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
-        <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl">
-          <div class="text-emerald-400 font-bold text-lg mb-2">01. Pago y Datos</div>
-          <p class="text-slate-400 text-sm">Eliges tu plan y completas un formulario técnico rápido con los datos y rutas que necesitas.</p>
-        </div>
-        <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl">
-          <div class="text-emerald-400 font-bold text-lg mb-2">02. Construcción</div>
-          <p class="text-slate-400 text-sm">Diseñamos la estructura de tablas, escribimos el código backend y aplicamos seguridad y validaciones.</p>
-        </div>
-        <div class="bg-slate-900/50 border border-slate-800 p-6 rounded-xl">
-          <div class="text-emerald-400 font-bold text-lg mb-2">03. Entrega Lista</div>
-          <p class="text-slate-400 text-sm">Recibes la URL de producción desplegada, las credenciales seguras y la guía para conectar tu app.</p>
-        </div>
       </div>
     </div>
+
+    <!-- Preguntas Frecuentes (FAQ) -->
+    <div id="faq" class="my-20 max-w-3xl mx-auto w-full">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Preguntas Frecuentes</h2>
+        <p class="text-slate-400 text-sm mt-2">Todo lo que necesitas saber antes de empezar.</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl">
+          <h4 class="font-bold text-white text-sm">¿De quién es el código y la base de datos?</h4>
+          <p class="text-slate-400 text-xs mt-2 leading-relaxed">El código fuente y la base de datos te pertenecen al 100%. Te transferimos el repositorio de GitHub y la propiedad del proyecto en Supabase.</p>
+        </div>
+
+        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl">
+          <h4 class="font-bold text-white text-sm">¿Hay reuniones o llamadas de sincronización?</h4>
+          <p class="text-slate-400 text-xs mt-2 leading-relaxed">No. Operamos de manera 100% asíncrona para maximizar la velocidad y reducir costes. Defines los requisitos en el formulario tras el pago y resolvemos cualquier duda por email.</p>
+        </div>
+
+        <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-xl">
+          <h4 class="font-bold text-white text-sm">¿Qué pasa si necesito algún ajuste tras la entrega?</h4>
+          <p class="text-slate-400 text-xs mt-2 leading-relaxed">Todos los planes incluyen un periodo de revisión para verificar que todos los endpoints funcionan exactamente como especificaste en el briefing.</p>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <!-- Footer -->
   <footer class="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
-    &copy; 2026 BackendForge Studio. Soluciones técnicas asíncronas para desarrolladores y creadores.
+    &copy; 2026 BackendForge Studio. Soluciones técnicas asíncronas para desarrolladores y fundadores.
   </footer>
 
 </body>
