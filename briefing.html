@@ -91,11 +91,23 @@
     &copy; 2026 BackendForge Studio. Todos los derechos reservados.
   </footer>
 
-  <!-- Script para conectar con Supabase -->
+  <!-- Script Supabase + Alertas Telegram -->
   <script>
+    // Supabase Config
     const supabaseUrl = 'https://qjlvgvuigdugaoutkbme.supabase.co';
     const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFqbHZndnVpZ2R1Z2FvdXRrYm1lIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY5ODgzNDcsImV4cCI6MjEwMjU2NDM0N30.Rp8CkxIeB5OsjXMFcin1KSMO2I6KUrvnXSiTzdSfzys';
     const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+    // Telegram Config
+    const TELEGRAM_BOT_TOKEN = '8669914278:AAE3fJWhOjxXvd_0EZxAvDhTne3phqgUDT4';
+    const TELEGRAM_CHAT_ID = '1749867233';
+
+    // Preseleccionar plan según la URL (?plan=starter o ?plan=pro)
+    const urlParams = new URLSearchParams(window.location.search);
+    const planParam = urlParams.get('plan');
+    const selectPlan = document.getElementById('plan');
+    if (planParam === 'starter') selectPlan.value = 'Starter (99€)';
+    if (planParam === 'pro') selectPlan.value = 'Pro (189€)';
 
     const form = document.getElementById('briefing-form');
     const submitBtn = document.getElementById('submit-btn');
@@ -111,10 +123,11 @@
         cliente_email: document.getElementById('email').value,
         plan: document.getElementById('plan').value,
         descripcion_proyecto: document.getElementById('descripcion').value,
-        datos_requeridos: document.getElementById('datos').value,
-        requisitos_extra: document.getElementById('requisitos').value
+        datos_requeridos: document.getElementById('datos').value || 'No especificado',
+        requisitos_extra: document.getElementById('requisitos').value || 'Ninguno'
       };
 
+      // 1. Guardar en Supabase
       const { data, error } = await supabaseClient
         .from('pedidos')
         .insert([payload]);
@@ -123,11 +136,36 @@
         alert('Hubo un error al registrar el pedido: ' + error.message);
         submitBtn.disabled = false;
         submitBtn.innerText = 'Reintentar envío';
-      } else {
-        form.classList.add('hidden');
-        successBox.classList.remove('hidden');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
       }
+
+      // 2. Enviar notificación instantánea a Telegram
+      const mensajeTelegram = `🔔 *¡NUEVO ENCARGO EN BACKENDFORGE!* 🔔\n\n` +
+        `👤 *Cliente:* ${payload.cliente_nombre}\n` +
+        `📧 *Email:* ${payload.cliente_email}\n` +
+        `📦 *Plan:* ${payload.plan}\n\n` +
+        `📝 *Descripción:*\n${payload.descripcion_proyecto}\n\n` +
+        `🗄 *Datos Requeridos:*\n${payload.datos_requeridos}\n\n` +
+        `⚙️ *Extras:*\n${payload.requisitos_extra}`;
+
+      try {
+        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: mensajeTelegram,
+            parse_mode: 'Markdown'
+          })
+        });
+      } catch (err) {
+        console.error('Error enviando notificación a Telegram:', err);
+      }
+
+      // 3. Mostrar pantalla de éxito
+      form.classList.add('hidden');
+      successBox.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   </script>
 </body>
